@@ -19,17 +19,27 @@ function occupancy() {
 
 function enter(numAdults, numChildren) {
   if(numAdults >= numChildren) {
-    numAdults += adults
-    numChildren += children
+    adults += numAdults //adults and children objects are the ones being reassigned hence why it worked when I changed the order from numAdults += adults to adults += numAdults.
+    children += numChildren
     return true
   } else {
     if(numAdults !== numChildren) {
       return false
     }
-  }
+  } //Note to myself for the future, this else if section is not really needed because once tests are run, if the arguments dont meet the first if it then must mean its false so I didn't actually have to code this part in but for the sake of practice
 }
 
-function leave(numAdults, numChildren)
+function leave(numAdults, numChildren) {
+  if(numAdults >= numChildren) {
+    adults -= numAdults
+    children -= numChildren
+    return true
+  } else {
+    if(numAdults < numChildren) {
+      return false
+    }
+  }
+}
 
 
 // TODO: Change the undefined values below to the name of your functions
@@ -39,28 +49,3 @@ module.exports = {
   occupancy: occupancy,
   reset: reset
 }
-
-
-// PLAIN ENGLISH 
-// CREATE THREE FUNCTIONS IN TOTAL
-// I need to create a condition that tracks how many adults and children are in the softplay center. For every child their needs to be AT LEAST one adult. If there is not then it will return a false. If there is then the number will increment accordingly. 
-
-// for leave function for every child that leaves at least one adult has to leave too and the number will decrement accordingly 
-
-// An adult can leave on their own, so long as their is still an adult to one child
-
-// there has to be more people in the playarea then there are people trying to leave
-
-//THOUGHTS ON SOLVING THE FIRST FUNCTION:
-// function enter(numAdults, numChildren)
-// for loop - (not sure how to set it up) but after inital set up, if AT LEAST one adult and  child want to enter then that is true and increment the overall number 
-// if the number of adults to children is not even then its false and number will not increment
-
-
-// PSEUDO CODE 
-//FIRST FUNCTION: 
-// FUNCTION enter (NUM ADULTS, NUM CHILDREN) {
-// FOR every adult = A child can enter 
-// FOR ADULT >= CHILD THEN ADD Numofadult and numofchildren
-//IF CHILD > ADULT then RETURN False
-//}
