@@ -29,17 +29,32 @@ function enter(numAdults, numChildren) {
   } //Note to myself for the future, this else if section is not really needed because once tests are run, if the arguments dont meet the first if it then must mean its false so I didn't actually have to code this part in but for the sake of practice
 }
 
+// function leave(numAdults, numChildren) {
+//   if(numAdults >= numChildren) {
+//     adults -= numAdults
+//     children -= numChildren
+//     return true
+//   } else {
+//     if(numAdults < numChildren || 
+//       numAdults > adults ||
+//       numChildren > children ||
+//       children - numChildren > adults - numAdults) 
+//       return false
+//     }
+  
+// }
+
 function leave(numAdults, numChildren) {
-  if(numAdults >= numChildren) {
+  if(numAdults < numChildren || 
+    numAdults > adults ||
+    numChildren > children ||
+    children - numChildren > adults - numAdults) {
+      return false
+    } 
     adults -= numAdults
     children -= numChildren
     return true
-  } else {
-    if(numAdults < numChildren) {
-      return false
-    }
-  }
-}
+} // study this before sumbitting it and ask carlos about it
 
 
 // TODO: Change the undefined values below to the name of your functions
